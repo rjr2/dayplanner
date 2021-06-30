@@ -1,6 +1,6 @@
 # dayplanner
 
-Link to [DayPlanner](https://rjr2/github.io/dayPlanner)
+Link to [DayPlanner](https://rjr2.github.io/dayPlanner)
 
 A day planner that works for a single day.
 
