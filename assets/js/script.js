@@ -1,8 +1,11 @@
-
+//Variables for color changing
+const rows = document.getElementsByClassName("row");
+let currentHour = parseInt(moment().format('H'));
 
 //Current date in header
 document.getElementById("currentDay").innerHTML = moment().format("MMMM Do YYYY");
 
+//pulling todo list from storage
 $("#todo9").val(localStorage.todo9);
 $("#todo10").val(localStorage.todo10);
 $("#todo11").val(localStorage.todo11);
@@ -13,6 +16,7 @@ $("#todo15").val(localStorage.todo15);
 $("#todo16").val(localStorage.todo16);
 $("#todo17").val(localStorage.todo17);
 
+//event listeners to save todo list to storage
 $('#save9').on('click', function(){
     localStorage.todo9 = $('#todo9').val()
 })
@@ -47,3 +51,27 @@ $('#save16').on('click', function(){
 $('#save17').on('click', function(){
     localStorage.todo17 = $('#todo17').val()
 })
+
+Array.from(rows).forEach(row => {
+    let
+      rowIdString = row.id,
+      rowHour;
+    if (rowIdString) {
+      rowHour = parseInt(rowIdString);
+    }
+    if (rowHour) {
+      if (currentHour === rowHour) {
+        setColor(row, "red");
+      } else if ((currentHour < rowHour) && (currentHour > rowHour - 6)) {
+        setColor(row, "green");
+      } else if ((currentHour > rowHour) && (currentHour < rowHour + 6)) {
+        setColor(row, "lightgrey");
+      } else {
+        setColor(row, "white");
+      }
+    }
+  });
+  
+  function setColor(element, color) {
+    element.style.backgroundColor = color;
+  }
